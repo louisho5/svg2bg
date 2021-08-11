@@ -28,12 +28,13 @@ header h1 {
 	margin-bottom: 0;
 }
 header h1 span.gradient {
+	background: black;
 	background-image: url(https://louisho5.github.io/svg2bg/assets/headerbg.gif);
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
+	background-size: 100%;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-text-fill-color: transparent;
 }
 header p {
 	margin-top: 10px;
