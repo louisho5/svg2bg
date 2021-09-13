@@ -3,6 +3,7 @@ var URL_Input = document.querySelector("#urlInput > input");
 var textarea = document.querySelector("#result > textarea");
 var preview = document.querySelector("#preview");
 var btnCopy = document.querySelector("button.btn-copy");
+var btnBgOnly = document.querySelector('#result .btn-bg input[name="bgOnly"]');
 
 // Declare file input event listeners
 fileUpload.addEventListener("change", handleUpload);
@@ -11,8 +12,19 @@ function handleUpload (event){
 	var file = event.target.files[0];
 	var reader = new FileReader();
 	reader.onload = (e) => { 
-		textarea.value = 'background-image: url("data:image/svg+xml,' + encodeURIComponent(e.target.result) + '");';
+		var resultVal = '';
+		resultVal += 'content: "";\n';
+		resultVal += 'padding: 30px;\n';
+		resultVal += 'background-size: contain;\n';
+		resultVal += 'background-repeat: no-repeat;\n';
+		resultVal += 'background-position: center center;\n';
+		resultVal += 'background-image: url("data:image/svg+xml,' + encodeURIComponent(e.target.result) + '");';
+		textarea.value = resultVal;
+		if ( btnBgOnly.checked ) {
+			textarea.value = 'background-image: url("data:image/svg+xml,' + encodeURIComponent(e.target.result) + '");';
+		}
 		preview.innerHTML = e.target.result;
+		
 	};
 	reader.readAsText(file);
 	btnCopy.innerHTML = "Copy";
@@ -29,12 +41,23 @@ function handleURL() {
 		var reader = new FileReader();
 		reader.readAsDataURL(request.response);
 		reader.onload =  function(e){
-			textarea.value = 'background-image: url("' + e.target.result + '");';;
+			var resultVal = '';
+			resultVal += 'content: "";\n';
+			resultVal += 'padding: 30px;\n';
+			resultVal += 'background-size: contain;\n';
+			resultVal += 'background-repeat: no-repeat;\n';
+			resultVal += 'background-position: center center;\n';
+			resultVal += 'background-image: url("' + e.target.result + '");';;
+			textarea.value = resultVal;
+			if ( btnBgOnly.checked ) {
+				textarea.value = 'background-image: url("data:image/svg+xml,' + encodeURIComponent(e.target.result) + '");';
+			}
 			preview.innerHTML = "<img src='" + e.target.result + "'>";
 		};
 	};
 	request.send();
 	btnCopy.innerHTML = "Copy";
+	URL_Input.value = URL_Input.value + "?";  // perform onchange
 }
 
 // Focus blur
