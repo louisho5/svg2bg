@@ -12,16 +12,18 @@ function handleUpload (event){
 	var file = event.target.files[0];
 	var reader = new FileReader();
 	reader.onload = (e) => { 
+		var temp = e.target.result;
+		temp = encodeXml(temp);
 		var resultVal = '';
 		resultVal += 'content: "";\n';
 		resultVal += 'padding: 30px;\n';
 		resultVal += 'background-size: contain;\n';
 		resultVal += 'background-repeat: no-repeat;\n';
 		resultVal += 'background-position: center center;\n';
-		resultVal += 'background-image: url("data:image/svg+xml,' + encodeURIComponent(e.target.result) + '");';
+		resultVal += 'background-image: url("data:image/svg+xml,' + temp + '");';
 		textarea.value = resultVal;
 		if ( btnBgOnly.checked ) {
-			textarea.value = 'background-image: url("data:image/svg+xml,' + encodeURIComponent(e.target.result) + '");';
+			textarea.value = 'background-image: url("data:image/svg+xml,' + temp + '");';
 		}
 		preview.innerHTML = e.target.result;
 		
@@ -39,20 +41,22 @@ function handleURL() {
 	request.responseType = 'blob';
 	request.onload = function() {
 		var reader = new FileReader();
-		reader.readAsDataURL(request.response);
+		reader.readAsText(request.response);	
 		reader.onload =  function(e){
+			var temp = e.target.result;
+			temp_result = encodeXml(temp);
 			var resultVal = '';
 			resultVal += 'content: "";\n';
 			resultVal += 'padding: 30px;\n';
 			resultVal += 'background-size: contain;\n';
 			resultVal += 'background-repeat: no-repeat;\n';
 			resultVal += 'background-position: center center;\n';
-			resultVal += 'background-image: url("' + e.target.result + '");';;
+			resultVal += 'background-image: url("data:image/svg+xml,' + temp_result + '");';;
 			textarea.value = resultVal;
 			if ( btnBgOnly.checked ) {
-				textarea.value = 'background-image: url("data:image/svg+xml,' + encodeURIComponent(e.target.result) + '");';
+				textarea.value = 'background-image: url("data:image/svg+xml,' + temp_result + '");';
 			}
-			preview.innerHTML = "<img src='" + e.target.result + "'>";
+			preview.innerHTML = temp;
 		};
 	};
 	request.send();
@@ -104,8 +108,20 @@ const handleDrop = e => {
 dropArea.addEventListener("drop", handleDrop, false);
 
 
-/* Click to copy */ 
+/* XML escape */
+function encodeXml(file) {
+    return file.replace(/[<>&'"]/g, function (c) {
+        switch (c) {
+            case '<': return '%3C';
+            case '>': return '%3E';
+            case '&': return '%26';
+            case '\'': return '%5C';
+            case '"': return '%22';
+        }
+    });
+}
 
+/* Click to copy */ 
 btnCopy.onclick = function(){
     textarea.select();
     document.execCommand('copy');
