@@ -1,5 +1,5 @@
 # SVG 2 Background CSS
-[TRY DEMO](https://louisho5.github.io/svg2bg/)
+[Try the demo](https://louisho5.github.io/svg2bg/)
 
 ![alt thumbnail](https://raw.githubusercontent.com/louisho5/svg2bg/main/thumbnail.gif)
 
