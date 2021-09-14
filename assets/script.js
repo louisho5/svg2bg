@@ -117,7 +117,6 @@ function encodeXml(file) {
             case '&': return '%26';
             case '\'': return '%5C';
             case '"': return '%22';
-            case '/': return '%2F';
             case '#': return '%23';
         }
     });
