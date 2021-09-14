@@ -110,7 +110,7 @@ dropArea.addEventListener("drop", handleDrop, false);
 
 /* XML escape */
 function encodeXml(file) {
-    return file.replace(/[<>&'"]/g, function (c) {
+    return file.replace(/[<>&'"#]/g, function (c) {
         switch (c) {
             case '<': return '%3C';
             case '>': return '%3E';
