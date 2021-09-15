@@ -110,7 +110,7 @@ dropArea.addEventListener("drop", handleDrop, false);
 
 /* XML escape */
 function encodeXml(file) {
-    return file.replace(/[<>&'"#{}\r\n]/g, function (c) {
+    return file.replace(/[<>&'"#{}\r\n\t]/g, function (c) {
         switch (c) {
             case '<': return '%3C';
             case '>': return '%3E';
@@ -122,6 +122,7 @@ function encodeXml(file) {
             case '}': return '%7D';
             case '\r': return '%0A';
             case '\n': return '%0A';
+            case '\t': return '%0A';
         }
     });
 }
