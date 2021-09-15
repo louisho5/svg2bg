@@ -64,6 +64,20 @@ function handleURL() {
 	URL_Input.value = URL_Input.value + "?";  // perform onchange
 }
 
+// Detect checkbox
+var bgCheckboxTemp = localStorage.getItem('svg2bg_btnBgOnly');
+if ( bgCheckboxTemp == "checked" ) {
+  btnBgOnly.checked = true;
+}
+
+function bgOptionCheckbox() {
+  if ( btnBgOnly.checked ) {
+      localStorage.setItem('svg2bg_btnBgOnly', 'checked');
+  } else {
+      localStorage.setItem('svg2bg_btnBgOnly', 'unchecked');
+  }
+}
+
 // Focus blur
 function focusOut(){
 	setTimeout( function() {
@@ -131,5 +145,5 @@ function encodeXml(file) {
 btnCopy.onclick = function(){
     textarea.select();
     document.execCommand('copy');
-	btnCopy.innerHTML = "Copied";
+    btnCopy.innerHTML = "Copied";
 }
