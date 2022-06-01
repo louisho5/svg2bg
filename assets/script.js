@@ -47,7 +47,9 @@ function handleURL() {
 			temp_result = encodeXml(temp);
 			var resultVal = '';
 			resultVal += 'content: "";\n';
-			resultVal += 'padding: 30px;\n';
+			resultVal += 'display: inline-block\n';
+			resultVal += 'width: 100px\n';
+			resultVal += 'height: 100px\n';
 			resultVal += 'background-size: contain;\n';
 			resultVal += 'background-repeat: no-repeat;\n';
 			resultVal += 'background-position: center center;\n';
