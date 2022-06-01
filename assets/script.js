@@ -33,7 +33,7 @@ function handleUpload (event){
 }
 
 // Declare URL input event listeners
-URL_Input.addEventListener("change", handleURL);
+URL_Input.addEventListener("input", handleURL);
 
 function handleURL() {
 	var request = new XMLHttpRequest();
