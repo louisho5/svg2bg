@@ -46,7 +46,7 @@ function handleURL() {
 			var temp = e.target.result;
 			temp_result = encodeXml(temp);
 			var resultVal = '';
-			resultVal += 'content: " ";\n';
+			resultVal += 'content: "";\n';
 			resultVal += 'display: inline-block;\n';
 			resultVal += 'width: 100px;\n';
 			resultVal += 'height: 100px;\n';
