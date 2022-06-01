@@ -46,10 +46,10 @@ function handleURL() {
 			var temp = e.target.result;
 			temp_result = encodeXml(temp);
 			var resultVal = '';
-			resultVal += 'content: "";\n';
-			resultVal += 'display: inline-block\n';
-			resultVal += 'width: 100px\n';
-			resultVal += 'height: 100px\n';
+			resultVal += 'content: " ";\n';
+			resultVal += 'display: inline-block;\n';
+			resultVal += 'width: 100px;\n';
+			resultVal += 'height: 100px;\n';
 			resultVal += 'background-size: contain;\n';
 			resultVal += 'background-repeat: no-repeat;\n';
 			resultVal += 'background-position: center center;\n';
