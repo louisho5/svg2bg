@@ -183,6 +183,7 @@ section {
 #preview {
 	width: 50%;
 	height: 250px;
+	background: lightgrey;
 	border: 1px solid lightgrey;
 	overflow: hidden;
 }
